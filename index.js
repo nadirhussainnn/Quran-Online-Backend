@@ -38,8 +38,9 @@ mongoose
   });
 
 // routes called 
-app.route("/api",user_route)
-app.route("/api",quran_route)
+app.use("/api",user_route)
+app.use("/api",quran_route)
+
 
 //server
 app.listen(process.env.PORT, () => {
