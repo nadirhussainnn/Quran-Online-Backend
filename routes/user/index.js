@@ -1,11 +1,11 @@
 const express=require('express')
-const { login } = require('../../controllers/user')
+const { login, register, updateUser, deleteUser } = require('../../controllers/user')
 const user_route=express()
 
 user_route.post("/login",login)
-user_route.post("/register",login)
-user_route.patch("/update",login)
-user_route.delete("/delete",login)
+user_route.post("/register",register)
+user_route.patch("/update",updateUser)
+user_route.delete("/delete",deleteUser)
 
 module.exports={
     user_route

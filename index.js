@@ -5,8 +5,12 @@ const bodyParser = require('body-parser')
 const expressFileUpload = require('express-fileupload')
 const cloudinary = require('cloudinary').v2
 const mongoose=require('mongoose')
-const { user_route } = require('./routes/user')
 
+// routes
+const { user_route } = require('./routes/user')
+const { quran_route } = require('./routes/quran')
+
+// cloudinary configuration
 dotenv.config()
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -17,12 +21,13 @@ cloudinary.config({
 
 const app = express()
 
-
+// server configuration
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressFileUpload({ useTempFiles: true }));
 
+// database configuration
 mongoose
   .connect(process.env.DB_URL)
   .then(() => {
@@ -32,10 +37,11 @@ mongoose
     console.log(`Could not connect to database`, error);
   });
 
-
+// routes called 
 app.route("/api",user_route)
-app.route("/api",user_route)
+app.route("/api",quran_route)
 
+//server
 app.listen(process.env.PORT, () => {
     console.log(`Server is listening at ${process.env.PORT}`)
 })
