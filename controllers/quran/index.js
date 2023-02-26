@@ -3,7 +3,6 @@ const { parahs_data } = require("../../utils/constants")
 
 const getAllParahs = async (req, res) => {
   try {
-
     let data=await Parahs.find({})
     res.status(200).send({data})
   } catch (error) {
@@ -39,7 +38,7 @@ const getSurahById = async (req, res) => {
 const insert_parahs = async (req, res) => {
   try {
     let data = new Parahs({
-      parahs_data
+      parahs:parahs_data
     })
 
     await data.save()
