@@ -4,6 +4,8 @@ const { parahs_data } = require("../../utils/constants")
 const getAllParahs = async (req, res) => {
   try {
 
+    let data=await Parahs.find({})
+    res.status(200).send({data})
   } catch (error) {
     res.status(400).send({ success: false, message: error.message })
   }

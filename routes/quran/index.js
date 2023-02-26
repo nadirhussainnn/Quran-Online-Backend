@@ -3,7 +3,7 @@ const { getAllParahs, getAllSurahs, getSurahByParah, getSurahById, insert_parahs
 const verifyToken = require('../../middlewares')
 const quran_route = express()
 
-quran_route.get("/all-parahs", verifyToken, getAllParahs)
+quran_route.get("/all-parahs", getAllParahs)
 quran_route.get("/all-surahs", verifyToken, getAllSurahs)
 quran_route.get("/surahs-by-parah/:id", verifyToken, getSurahByParah)
 quran_route.get("/surah-by-id/:id", verifyToken, getSurahById)
